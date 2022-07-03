@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  zookeeper:
+    build: "../images/zookeeper"
+    container_name: "aerofin-zookeeper"
+    # image: "quay.io/aerofin/zookeeper:latest"
+    ports:
+      - "2181:2181"
+    volumes:
+      - "./volumes/zookeeper:/etc/zookeeper"
+  kafka-broker:
+    build: "../images/kafka"
+    container_name: "aerofin-kafka-broker"
+    # image: "quay.io/aerofin/kafka:latest"
+    entrypoint:
+      - "/usr/local/kafka/bin/kafka-server-start.sh"
+    command:
+      - "/etc/kafka-broker/server.properties"
+    ports:
+      - "9092:9092"
+    volumes:
+      - "./volumes/kafka-broker:/etc/kafka-broker"
+    depends_on:
+      - "zookeeper"
+    links:
+      - "zookeeper:zookeeper"
+  kafka-admin:
+    build: "../images/kafka"
+    container_name: "aerofin-kafka-admin"
+    # image: "quay.io/aerofin/kafka:latest"
+    entrypoint:
+      - "/opt/kafka-admin/entrypoint"
+    volumes:
+      - "./volumes/kafka-admin:/opt/kafka-admin"
+    depends_on:
+      - "zookeeper"
+      - "kafka-broker"
+    links:
+      - "kafka-broker:kafka-broker"
+      - "zookeeper:zookeeper"
