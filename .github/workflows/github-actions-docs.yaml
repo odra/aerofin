@@ -1,0 +1,24 @@
+name: "Aerofin Documentation Tests"
+on:
+  - "pull_request"
+jobs:
+  build:
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+    steps:
+      # setup
+      - uses: "actions/checkout@v3"
+      - name: "Set up Python ${{ matrix.python-version }}"
+        uses: "actions/setup-python@v4"
+        with:
+          python-version: "${{ matrix.python-version }}"
+      # install sphinx dependencies
+      - name: "Install docs dependencies"
+        working-directory: "./docs"
+        run: "pip install -U -r requirements.txt"
+      # build docs
+      - name: "Build docs"
+        working-directory: "./docs"
+        run: "make docs" 
