@@ -1,0 +1,26 @@
+name: "Aerofin Lib/Pybov Tests"
+on:
+  - "pull_request"
+jobs:
+  build:
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+    steps:
+      # setup
+      - uses: "actions/checkout@v3"
+      - name: "Set up Python ${{ matrix.python-version }}"
+        uses: "actions/setup-python@v4"
+        with:
+          python-version: "${{ matrix.python-version }}"
+      - name: "Install Poetry"
+        run: "pip install poetry"
+      # install dependencies
+      - name: "Install Dependencies"
+        working-directory: "./src/pybov"
+        run: "poetry install"
+      # Run tests
+      - name: "Run Tests"
+        working-directory: "./src/pybov"
+        run: "make test"

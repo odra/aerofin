@@ -11,6 +11,7 @@ It aims to provide stream-processing app platform on top of Kafka streams throug
 * [docs](./docs): project documentation source (sphinx)
 * [dev](./dev): develeopment environment resources, such as docker-compose files
 * [images](./images): files used to build container images, those are also used by the dev env tooling
+* [src](./src): source code folder for several "projects", each project/lib/component in its own folder
 
 ## License
 
