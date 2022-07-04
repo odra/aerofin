@@ -1,4 +1,4 @@
-name: "Aerofin Documentation Tests"
+name: "docs tests"
 on:
   - "pull_request"
 jobs:
