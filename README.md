@@ -1,4 +1,4 @@
-[![Documentation Status](https://readthedocs.org/projects/aerofin-project-docs/badge/?version=latest)](https://aerofin-project-docs.readthedocs.io/en/late    st/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/aerofin-project-docs/badge/?version=latest)](https://docs.aerofin.org/en/latest/?badge=latest)
 
 # Aerofin
 
