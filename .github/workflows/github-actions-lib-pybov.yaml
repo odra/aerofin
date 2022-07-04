@@ -1,4 +1,4 @@
-name: "Aerofin Lib/Pybov Tests"
+name: "src/pybov tests"
 on:
   - "pull_request"
 jobs:
