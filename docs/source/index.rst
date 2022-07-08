@@ -11,6 +11,7 @@ Welcome to Aerofin's documentation!
 
    introduction
    contributing
+   projects/index.rst
 
 Indices and tables
 ==================
