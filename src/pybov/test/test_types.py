@@ -31,11 +31,6 @@ def test_record(b3_demo_data):
     record = b3_demo_data.split('\n')[10].replace('\n', '')
     b3_record = types.Record.from_str(record)
 
-    print('---')
-    print(record)
-    print(repr(b3_record))
-    print('---')
-
     assert b3_record.regtype == '01'
     assert b3_record.date == '20030212'
     assert b3_record.bdi == types.BDI('96')

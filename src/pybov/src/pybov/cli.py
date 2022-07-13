@@ -9,6 +9,11 @@ from . import __version__ as pkg_version
 
 @click.group
 def cli() -> None:
+    """
+    Root click group to be used as the root group.
+
+    All subcommands should be added in this group.
+    """
     pass
 
 
@@ -50,9 +55,9 @@ def parse(path: str, dest: str) -> None:
     click.echo('Storing records (may take a while')
     counter = 0
     for line in lines[1:-1]:
-        print(counter)
         record = types.Record.from_str(line.replace('\n', ''))
-        helpers.write_file(f'{dest}/record-{counter}.json', types.as_json(record))
+        helpers.write_file(f'{dest}/record-{counter}.json',
+                           types.as_json(record))
         counter += 1
     click.echo('Records stored.')
 
@@ -62,6 +67,11 @@ cli.add_command(parse)
 
 
 def run() -> None:
+    """
+    Main function used by the pybov cli.
+
+    It is used as a "bin script" by setup.py.
+    """
     try:
         cli()
     except errors.PyBovError as e:

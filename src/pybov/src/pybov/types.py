@@ -2,7 +2,6 @@
 This module contains all b3 data classes
 which are used to represent b3 historical record data.
 """
-# import json
 from typing import Any, List
 from enum import Enum
 from dataclasses import dataclass, asdict
@@ -24,6 +23,12 @@ def as_json(model: Any) -> str:
 
 #TODO: use proper typing
 def asdict_enum_factory(data: Any) -> Any:
+    """
+    Function used as dataclasses.asdict factory.
+
+    It is used to make specific fields to be parseable as
+    json string data.
+    """
     def convert(obj: Any) -> Any:
         if isinstance(obj, Enum):
             return str(obj)
